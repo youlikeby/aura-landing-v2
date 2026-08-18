@@ -43,7 +43,7 @@ function Footer() {
             <h3 className="font-medium mb-4">Контакты</h3>
             <ul className="flex flex-col gap-2">
               {CONTACT_LINKS.map((link) => (
-                <li key={link.href}>
+                <li key={link.label}>
                   <a href={link.href} className="text-text-secondary hover:text-text-primary transition-colors duration-200">
                     {link.label}
                   </a>
