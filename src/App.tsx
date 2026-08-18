@@ -1,7 +1,12 @@
+import Header from './components/Header'
+import Footer from './components/Footer'
+
 function App() {
   return (
-    <div className="min-h-screen bg-background text-text-primary">
-      <p className="p-8">Aura AI — базовая инициализация проекта.</p>
+    <div className="min-h-screen bg-background text-text-primary font-sans antialiased">
+      <Header />
+      <main className="min-h-[50vh]" />
+      <Footer />
     </div>
   )
 }
