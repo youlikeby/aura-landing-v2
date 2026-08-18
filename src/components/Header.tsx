@@ -4,7 +4,7 @@ const NAV_LINKS = [
   { label: 'Решения', href: '#solutions' },
   { label: 'Выгода', href: '#benefit' },
   { label: 'Отрасли', href: '#industries' },
-  { label: 'Выгоды', href: '#benefits' },
+  { label: 'Выгоды', href: '#outcomes' },
   { label: 'Как работаем', href: '#process' },
 ]
 

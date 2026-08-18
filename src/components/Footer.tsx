@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom'
+
 const NAV_LINKS = [
   { label: 'Решения', href: '#solutions' },
   { label: 'Выгода', href: '#benefit' },
   { label: 'Отрасли', href: '#industries' },
-  { label: 'Выгоды', href: '#benefits' },
+  { label: 'Выгоды', href: '#outcomes' },
   { label: 'Как работаем', href: '#process' },
 ]
 
@@ -55,9 +57,9 @@ function Footer() {
 
         <div className="border-t border-white/5 mt-8 pt-8 flex justify-between text-text-muted text-sm">
           <span>© 2026 Aura AI. Все права защищены.</span>
-          <a href="#" className="hover:text-text-secondary transition-colors duration-200">
+          <Link to="/privacy" className="hover:text-text-secondary transition-colors duration-200">
             Политика конфиденциальности
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
