@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState, type FormEvent } from 'react'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 
@@ -6,6 +6,20 @@ const CONTACT_METHODS = ['Телефон', 'Telegram', 'WhatsApp']
 
 function FinalCTA() {
   const [contactMethod, setContactMethod] = useState(CONTACT_METHODS[0])
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const formRef = useRef<HTMLFormElement>(null)
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    setTimeout(() => {
+      setIsSubmitting(false)
+      formRef.current?.reset()
+      setContactMethod(CONTACT_METHODS[0])
+      alert('Заявка успешно отправлена! Мы свяжемся с вами в течение дня.')
+    }, 1000)
+  }
 
   return (
     <section className="py-24 px-6 max-w-4xl mx-auto">
@@ -20,13 +34,7 @@ function FinalCTA() {
           Расскажем, как AI может сэкономить вам время и деньги — оценим задачу и предложим решение.
         </p>
 
-        <form
-          className="mt-8 flex flex-col gap-4"
-          onSubmit={(e) => {
-            e.preventDefault()
-            alert('Заявка отправлена! (заглушка)')
-          }}
-        >
+        <form ref={formRef} className="mt-8 flex flex-col gap-4" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Ваше имя"
@@ -62,8 +70,13 @@ function FinalCTA() {
           />
 
           <div className="mt-2 flex justify-center md:justify-start">
-            <Button type="submit" variant="primary" className="w-full md:w-auto">
-              Получить бесплатный расчёт
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={isSubmitting}
+              className={`w-full md:w-auto ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
+            >
+              {isSubmitting ? 'Отправка...' : 'Получить бесплатный расчёт'}
             </Button>
           </div>
         </form>

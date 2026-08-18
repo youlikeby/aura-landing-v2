@@ -1,5 +1,6 @@
 import Card from '../ui/Card'
 import Button from '../ui/Button'
+import FadeIn from '../ui/FadeIn'
 
 const SOLUTIONS = [
   {
@@ -56,36 +57,44 @@ const SOLUTIONS = [
 function Solutions() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center">
-        Сделаем любое решение{' '}
-        <span className="bg-accent-gradient bg-clip-text text-transparent">под вашу задачу</span>
-      </h2>
-      <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
-        Отрасли не важны — если можно автоматизировать любое предприятие любой сферы
-      </p>
+      <FadeIn>
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          Сделаем любое решение{' '}
+          <span className="bg-accent-gradient bg-clip-text text-transparent">под вашу задачу</span>
+        </h2>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
+          Отрасли не важны — если можно автоматизировать любое предприятие любой сферы
+        </p>
+      </FadeIn>
 
       <div className="grid md:grid-cols-2 gap-6 mt-12">
-        {SOLUTIONS.map((solution) => (
-          <Card key={solution.title}>
-            <div className="mb-4">{solution.icon}</div>
-            <h3 className="text-xl font-bold">{solution.title}</h3>
-            <p className="text-text-secondary mt-2">{solution.body}</p>
-          </Card>
+        {SOLUTIONS.map((solution, index) => (
+          <FadeIn key={solution.title} delay={index * 100}>
+            <Card>
+              <div className="mb-4">{solution.icon}</div>
+              <h3 className="text-xl font-bold">{solution.title}</h3>
+              <p className="text-text-secondary mt-2">{solution.body}</p>
+            </Card>
+          </FadeIn>
         ))}
 
-        <Card
-          className="md:col-span-2 border-dashed border-2 border-white/20 bg-transparent hover:border-accent-lime/50"
-          hoverEffect={false}
-        >
-          <h3 className="text-xl font-bold">Ваша задача</h3>
-          <p className="text-text-secondary mt-2 max-w-xl">
-            Не нашли своё? Расскажите, с какой задачей нужна помощь — подберём подходящее AI-решение под ваш
-            бизнес.
-          </p>
-          <div className="mt-6">
-            <Button variant="secondary">Описать свою задачу</Button>
-          </div>
-        </Card>
+        <FadeIn delay={400} className="md:col-span-2">
+          <Card
+            className="border-dashed border-2 border-white/20 bg-transparent hover:border-accent-lime/50"
+            hoverEffect={false}
+          >
+            <h3 className="text-xl font-bold">Ваша задача</h3>
+            <p className="text-text-secondary mt-2 max-w-xl">
+              Не нашли своё? Расскажите, с какой задачей нужна помощь — подберём подходящее AI-решение под ваш
+              бизнес.
+            </p>
+            <div className="mt-6">
+              <Button variant="secondary">Описать свою задачу</Button>
+            </div>
+          </Card>
+        </FadeIn>
       </div>
     </section>
   )

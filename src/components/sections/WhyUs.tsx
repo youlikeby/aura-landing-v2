@@ -1,4 +1,5 @@
 import Card from '../ui/Card'
+import FadeIn from '../ui/FadeIn'
 
 const REASONS = [
   {
@@ -22,16 +23,20 @@ const REASONS = [
 function WhyUs() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center">
-        Почему с нами <span className="bg-accent-gradient bg-clip-text text-transparent">спокойно</span>
-      </h2>
+      <FadeIn>
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          Почему с нами <span className="bg-accent-gradient bg-clip-text text-transparent">спокойно</span>
+        </h2>
+      </FadeIn>
 
       <div className="grid md:grid-cols-2 gap-6 mt-12">
-        {REASONS.map((reason) => (
-          <Card key={reason.title}>
-            <h3 className="text-xl font-bold">{reason.title}</h3>
-            <p className="text-text-secondary mt-2">{reason.body}</p>
-          </Card>
+        {REASONS.map((reason, index) => (
+          <FadeIn key={reason.title} delay={index * 100}>
+            <Card>
+              <h3 className="text-xl font-bold">{reason.title}</h3>
+              <p className="text-text-secondary mt-2">{reason.body}</p>
+            </Card>
+          </FadeIn>
         ))}
       </div>
     </section>

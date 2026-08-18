@@ -1,5 +1,6 @@
 import Card from '../ui/Card'
 import Button from '../ui/Button'
+import FadeIn from '../ui/FadeIn'
 
 const INDUSTRY_CARDS = [
   {
@@ -54,65 +55,73 @@ const WIDE_CARDS = [
 function Industries() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center">
-        Решения для{' '}
-        <span className="bg-accent-gradient bg-clip-text text-transparent">вашей отрасли</span>
-      </h2>
-      <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
-        Модифицируем AI-подход под специфику любого бизнеса
-      </p>
+      <FadeIn>
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          Решения для{' '}
+          <span className="bg-accent-gradient bg-clip-text text-transparent">вашей отрасли</span>
+        </h2>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
+          Модифицируем AI-подход под специфику любого бизнеса
+        </p>
+      </FadeIn>
 
       <div className="grid md:grid-cols-3 gap-6 mt-12">
-        {INDUSTRY_CARDS.map((card) => (
-          <div key={card.title} className="relative overflow-hidden rounded-card group h-96">
-            <img
-              src={card.image}
-              alt={card.title}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6">
+        {INDUSTRY_CARDS.map((card, index) => (
+          <FadeIn key={card.title} delay={index * 100}>
+            <div className="relative overflow-hidden rounded-card group h-96">
+              <img
+                src={card.image}
+                alt={card.title}
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <h3 className="text-xl font-bold">{card.title}</h3>
+                <p className="text-text-muted text-sm">{card.caption}</p>
+                <p className="text-text-secondary text-sm mt-2">{card.body}</p>
+                <div className="flex gap-2 mt-4 flex-wrap">
+                  {card.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 rounded-pill bg-card border border-white/10 text-xs text-text-secondary"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        ))}
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-6 mt-6">
+        {WIDE_CARDS.map((card, index) => (
+          <FadeIn key={card.title} delay={index * 100}>
+            <Card>
+              <div className="mb-4">{card.icon}</div>
               <h3 className="text-xl font-bold">{card.title}</h3>
-              <p className="text-text-muted text-sm">{card.caption}</p>
-              <p className="text-text-secondary text-sm mt-2">{card.body}</p>
+              <ul className="flex flex-col gap-2 mt-3">
+                {card.points.map((point) => (
+                  <li key={point} className="text-text-secondary text-sm">
+                    {point}
+                  </li>
+                ))}
+              </ul>
               <div className="flex gap-2 mt-4 flex-wrap">
                 {card.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 rounded-pill bg-card border border-white/10 text-xs text-text-secondary"
+                    className="px-3 py-1 rounded-pill bg-background border border-white/10 text-xs text-text-secondary"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-6 mt-6">
-        {WIDE_CARDS.map((card) => (
-          <Card key={card.title}>
-            <div className="mb-4">{card.icon}</div>
-            <h3 className="text-xl font-bold">{card.title}</h3>
-            <ul className="flex flex-col gap-2 mt-3">
-              {card.points.map((point) => (
-                <li key={point} className="text-text-secondary text-sm">
-                  {point}
-                </li>
-              ))}
-            </ul>
-            <div className="flex gap-2 mt-4 flex-wrap">
-              {card.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="px-3 py-1 rounded-pill bg-background border border-white/10 text-xs text-text-secondary"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
-          </Card>
+            </Card>
+          </FadeIn>
         ))}
       </div>
 

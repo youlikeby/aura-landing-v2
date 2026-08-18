@@ -1,11 +1,12 @@
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
+import CountUp from '../ui/CountUp'
 
 const NUMBERS = [
-  { value: '-60%', label: 'к стоимости разработки' },
-  { value: 'x5', label: 'быстрее запуска' },
-  { value: '$10–15k', label: 'экономия на команде' },
+  { prefix: '-', target: 60, suffix: '%', label: 'к стоимости разработки' },
+  { prefix: 'x', target: 5, suffix: '', label: 'быстрее запуска' },
+  { prefix: '$10–', target: 15, suffix: 'k', label: 'экономия на команде' },
 ]
 
 const CLASSIC_POINTS = ['Команда 3–5 человек', '$3000/мес на подрядчиков', '3–6 месяцев до запуска', 'Оплата за часы']
@@ -30,9 +31,12 @@ function Benefit() {
       <div className="grid grid-cols-3 gap-8 my-12 text-center">
         {NUMBERS.map((number) => (
           <div key={number.label}>
-            <span className="text-3xl md:text-4xl font-bold bg-accent-gradient bg-clip-text text-transparent">
-              {number.value}
-            </span>
+            <CountUp
+              prefix={number.prefix}
+              target={number.target}
+              suffix={number.suffix}
+              className="text-3xl md:text-4xl font-bold bg-accent-gradient bg-clip-text text-transparent"
+            />
             <p className="text-text-secondary mt-2 text-sm md:text-base">{number.label}</p>
           </div>
         ))}

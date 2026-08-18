@@ -1,4 +1,5 @@
 import Button from '../ui/Button'
+import FadeIn from '../ui/FadeIn'
 
 const STEPS = [
   {
@@ -26,18 +27,20 @@ const STEPS = [
 function Process() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto bg-card-light">
-      <h2 className="text-3xl md:text-5xl font-bold text-center">
-        От идеи{' '}
-        <span className="bg-accent-gradient bg-clip-text text-transparent">к результату</span>
-      </h2>
+      <FadeIn>
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          От идеи{' '}
+          <span className="bg-accent-gradient bg-clip-text text-transparent">к результату</span>
+        </h2>
+      </FadeIn>
 
       <div className="grid md:grid-cols-4 gap-8 mt-12">
-        {STEPS.map((step) => (
-          <div key={step.number}>
+        {STEPS.map((step, index) => (
+          <FadeIn key={step.number} delay={index * 100}>
             <p className="text-5xl font-bold text-text-muted/30 mb-4">{step.number}</p>
             <h3 className="text-xl font-bold">{step.title}</h3>
             <p className="text-text-secondary mt-2">{step.body}</p>
-          </div>
+          </FadeIn>
         ))}
       </div>
 

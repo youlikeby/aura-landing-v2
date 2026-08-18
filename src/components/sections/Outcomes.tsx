@@ -1,4 +1,5 @@
 import Card from '../ui/Card'
+import FadeIn from '../ui/FadeIn'
 
 const OUTCOMES = [
   {
@@ -22,20 +23,26 @@ const OUTCOMES = [
 function Outcomes() {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-bold text-center">
-        Что это даст{' '}
-        <span className="bg-accent-gradient bg-clip-text text-transparent">вашему бизнесу</span>
-      </h2>
-      <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
-        Конкретные результаты от внедрения AI-инструментов в ваши процессы
-      </p>
+      <FadeIn>
+        <h2 className="text-3xl md:text-5xl font-bold text-center">
+          Что это даст{' '}
+          <span className="bg-accent-gradient bg-clip-text text-transparent">вашему бизнесу</span>
+        </h2>
+      </FadeIn>
+      <FadeIn delay={100}>
+        <p className="text-text-secondary text-xl mt-6 max-w-2xl mx-auto text-center">
+          Конкретные результаты от внедрения AI-инструментов в ваши процессы
+        </p>
+      </FadeIn>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-        {OUTCOMES.map((outcome) => (
-          <Card key={outcome.title}>
-            <h3 className="text-xl font-bold">{outcome.title}</h3>
-            <p className="text-text-secondary mt-2">{outcome.body}</p>
-          </Card>
+        {OUTCOMES.map((outcome, index) => (
+          <FadeIn key={outcome.title} delay={index * 100}>
+            <Card>
+              <h3 className="text-xl font-bold">{outcome.title}</h3>
+              <p className="text-text-secondary mt-2">{outcome.body}</p>
+            </Card>
+          </FadeIn>
         ))}
       </div>
     </section>

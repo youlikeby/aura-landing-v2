@@ -1,9 +1,10 @@
 import Card from '../ui/Card'
+import CountUp from '../ui/CountUp'
 
 const STATS = [
-  { value: '40+', label: 'запущено сервисов' },
-  { value: '30+', label: 'постоянных клиентов' },
-  { value: '12', label: 'проектов в работе сейчас' },
+  { target: 40, suffix: '+', label: 'запущено сервисов' },
+  { target: 30, suffix: '+', label: 'постоянных клиентов' },
+  { target: 12, suffix: '', label: 'проектов в работе сейчас' },
 ]
 
 function Stats() {
@@ -14,9 +15,11 @@ function Stats() {
           <div className="flex flex-col gap-6">
             {STATS.map((stat) => (
               <div key={stat.label}>
-                <span className="text-5xl font-bold bg-accent-gradient bg-clip-text text-transparent">
-                  {stat.value}
-                </span>
+                <CountUp
+                  target={stat.target}
+                  suffix={stat.suffix}
+                  className="text-5xl font-bold bg-accent-gradient bg-clip-text text-transparent"
+                />
                 <p className="text-text-secondary mt-2">{stat.label}</p>
               </div>
             ))}
@@ -28,7 +31,7 @@ function Stats() {
 
         <div className="relative">
           <span className="absolute -top-3 right-4 z-10 px-3 py-1 rounded-pill bg-accent-gradient text-white text-sm font-medium shadow-glow">
-            +47%
+            <CountUp target={47} prefix="+" suffix="%" />
           </span>
           <div className="bg-background border border-white/10 rounded-card p-6 shadow-glow">
             <svg viewBox="0 0 300 140" className="w-full h-auto" preserveAspectRatio="none">
