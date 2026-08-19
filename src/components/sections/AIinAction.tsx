@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
+import ContactModal from '../ContactModal'
 import { useInView } from '../../hooks/useInView'
 
 const MESSAGES: { role: 'user' | 'bot'; text: string }[] = [
@@ -18,6 +19,7 @@ function AIinAction() {
   const { ref, isInView } = useInView<HTMLDivElement>()
   const [visibleCount, setVisibleCount] = useState(0)
   const [typingIndex, setTypingIndex] = useState<number | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     if (!isInView) return
@@ -99,8 +101,12 @@ function AIinAction() {
       </div>
 
       <div className="text-center mt-12">
-        <Button variant="primary">Хочу так же</Button>
+        <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+          Хочу так же
+        </Button>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import Card from '../ui/Card'
 import Button from '../ui/Button'
 import FadeIn from '../ui/FadeIn'
+import ContactModal from '../ContactModal'
 
 const INDUSTRY_CARDS = [
   {
@@ -53,6 +55,8 @@ const WIDE_CARDS = [
 ]
 
 function Industries() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section id="industries" className="py-24 px-6 max-w-7xl mx-auto">
       <FadeIn>
@@ -126,8 +130,12 @@ function Industries() {
       </div>
 
       <div className="text-center mt-12">
-        <Button variant="secondary">Не нашли свою отрасль? Это не проблема — мы делаем любые решения</Button>
+        <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+          Не нашли свою отрасль? Это не проблема — мы делаем любые решения
+        </Button>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

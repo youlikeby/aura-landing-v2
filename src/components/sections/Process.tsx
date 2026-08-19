@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import Button from '../ui/Button'
 import FadeIn from '../ui/FadeIn'
+import ContactModal from '../ContactModal'
 
 const STEPS = [
   {
@@ -25,6 +27,8 @@ const STEPS = [
 ]
 
 function Process() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section id="process" className="py-24 px-6 max-w-7xl mx-auto bg-card-light">
       <FadeIn>
@@ -45,8 +49,12 @@ function Process() {
       </div>
 
       <div className="text-center mt-12">
-        <Button variant="secondary">Начать с бесплатного расчёта</Button>
+        <Button variant="secondary" onClick={() => setIsModalOpen(true)}>
+          Начать с бесплатного расчёта
+        </Button>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }
