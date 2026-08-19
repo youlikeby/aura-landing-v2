@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Hero from './components/sections/Hero'
-import Stats from './components/sections/Stats'
 import Marquee from './components/sections/Marquee'
 import Solutions from './components/sections/Solutions'
 import Benefit from './components/sections/Benefit'
@@ -27,7 +26,6 @@ function App() {
               element={
                 <>
                   <Hero />
-                  <Stats />
                   <Marquee />
                   <Solutions />
                   <Benefit />
