@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import Card from '../ui/Card'
 import CountUp from '../ui/CountUp'
+import ContactModal from '../ContactModal'
 
 const NUMBERS = [
   { prefix: '-', target: 60, suffix: '%', label: 'к стоимости разработки' },
@@ -14,6 +16,8 @@ const CLASSIC_POINTS = ['Команда 3–5 человек', '$3000/мес н�
 const AURA_POINTS = ['AI делает основной объём работы', 'MVP за 2–4 недели', 'Компактная команда', 'Оплата за результат']
 
 function Benefit() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section id="benefit" className="py-24 px-6 max-w-7xl mx-auto bg-card-light">
       <div className="text-center">
@@ -73,9 +77,13 @@ function Benefit() {
           Тот же результат — быстрее, дешевле и без лишних затрат на команду.
         </p>
         <div className="mt-8">
-          <Button variant="primary">Получить бесплатный расчёт</Button>
+          <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+            Получить бесплатный расчёт
+          </Button>
         </div>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }

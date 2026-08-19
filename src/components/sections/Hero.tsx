@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
+import ContactModal from '../ContactModal'
 
 function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       <div
@@ -23,7 +27,9 @@ function Hero() {
         </p>
 
         <div className="flex justify-center gap-4 mt-8">
-          <Button variant="primary">Получить бесплатный расчёт</Button>
+          <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+            Получить бесплатный расчёт
+          </Button>
           <Button variant="secondary">Смотреть решения</Button>
         </div>
 
@@ -31,6 +37,8 @@ function Hero() {
           Бесплатно · Ни к чему не обязывает · Ответим в течение дня
         </p>
       </div>
+
+      <ContactModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </section>
   )
 }
