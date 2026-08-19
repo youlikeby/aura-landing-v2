@@ -37,8 +37,8 @@ function Outcomes() {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
         {OUTCOMES.map((outcome, index) => (
-          <FadeIn key={outcome.title} delay={index * 100}>
-            <Card>
+          <FadeIn key={outcome.title} delay={index * 100} className="h-full">
+            <Card className="h-full">
               <h3 className="text-xl font-bold">{outcome.title}</h3>
               <p className="text-text-secondary mt-2">{outcome.body}</p>
             </Card>
