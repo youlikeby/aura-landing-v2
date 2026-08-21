@@ -59,10 +59,24 @@ section[id] {
   animation: dot-pulse 3s ease-in-out infinite;
 }
 
+@keyframes data-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+
+.animate-data-flow {
+  animation: data-flow 1.4s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-aurora,
   .animate-aurora-slow,
-  .animate-dot-pulse {
+  .animate-dot-pulse,
+  .animate-data-flow {
     animation: none;
   }
 }
