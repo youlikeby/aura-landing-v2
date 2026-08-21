@@ -58,7 +58,7 @@ function Industries() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <section id="industries" className="py-24 px-6 max-w-7xl mx-auto">
+    <section id="industries" className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
       <FadeIn>
         <h2 className="text-3xl md:text-5xl font-bold text-center">
           Решения для{' '}

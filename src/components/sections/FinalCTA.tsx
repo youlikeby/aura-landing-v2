@@ -59,7 +59,7 @@ function FinalCTA() {
   }
 
   return (
-    <section className="py-24 px-6 max-w-4xl mx-auto">
+    <section className="py-16 md:py-24 px-6 max-w-4xl mx-auto">
       <Card
         className="bg-gradient-to-br from-[#15151C] to-[#1B1B25] border-[#7C3AED]/30 shadow-glow p-8 md:p-12"
         hoverEffect={false}

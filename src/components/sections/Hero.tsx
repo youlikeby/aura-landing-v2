@@ -7,7 +7,7 @@ function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <section className="relative pt-32 pb-20 overflow-hidden">
+    <section className="relative pt-32 pb-16 md:pb-24 overflow-hidden">
       <div
         aria-hidden="true"
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-accent-gradient opacity-20 blur-3xl pointer-events-none"
