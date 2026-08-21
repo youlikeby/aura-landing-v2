@@ -19,7 +19,7 @@ function Benefit() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <section id="benefit" className="py-16 md:py-24 px-6 max-w-7xl mx-auto bg-card-light">
+    <section id="benefit" className="py-24 px-6 max-w-7xl mx-auto bg-card-light">
       <div className="text-center">
         <Badge>Честная математика</Badge>
 

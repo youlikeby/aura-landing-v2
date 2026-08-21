@@ -47,7 +47,7 @@ function AIinAction() {
   }, [isInView])
 
   return (
-    <section className="py-16 md:py-24 px-6 max-w-7xl mx-auto">
+    <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="text-center">
         <Badge>AI в действии</Badge>
       </div>

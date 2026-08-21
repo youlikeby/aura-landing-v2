@@ -30,7 +30,7 @@ function Process() {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <section id="process" className="py-16 md:py-24 px-6 max-w-7xl mx-auto bg-card-light">
+    <section id="process" className="py-24 px-6 max-w-7xl mx-auto bg-card-light">
       <FadeIn>
         <h2 className="text-3xl md:text-5xl font-bold text-center">
           От идеи{' '}
